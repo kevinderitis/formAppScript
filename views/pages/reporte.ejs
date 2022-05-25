@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+    <style>
+.barchart-Wrapper {
+      display: table;
+      position: relative;
+      margin: 20px 0;
+      height: 252px;
+    }
+    .barChart-Container {
+      display: table-cell;
+      width: 100%;
+      height: 100%;
+      padding-left: 15px;
+    }
+    .barchart {
+     display: table;
+     table-layout: fixed;
+     height: 100%;
+     width: 100%;
+     border-bottom: 1px solid tomato;
+    }
+    .barchart-Col {
+      position: relative;
+      vertical-align: bottom;
+      display: table-cell;
+      height: 100%;
+    }
+    .barchart-Col + .barchart-Col {
+      border-left: 4px solid transparent;
+    }
+    .barchart-Bar {
+      position: relative;
+      height: 0;
+      transition: height 0.5s 2s;
+      width: 40px;
+      margin: auto;
+    }
+    .barchart-Bar:after {
+      content: attr(attr-height);
+      color: white;
+      position: absolute;
+      text-align: center;
+      width: 100%;
+    }
+    .barchart-BarFooter {
+      position: absolute;
+      text-align: center;
+      height: 10%;
+      width: 100%;
+    }
+    .barchart-BarFooter h3 {
+      color: darkred;
+    }
+    .barchart-TimeCol {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      width: 100%;
+    }
+    .barchart-Time {
+      height: 25%;
+      vertical-align: middle;
+      position: relative;
+    }
+    .barchart-Time:after {
+      border-bottom: 3px solid black;
+      content: "";
+      position: absolute;
+      width: 100%;
+      left: 0;
+      top: 0em;
+    }
+    .barchart-TimeText {
+      position: absolute;
+      top: -8px;
+      z-index: 1;
+      background: white;
+      padding-right: 5px;
+      color: #4d4d4d;
+      font-size: 15px;
+      font-family: "Avenir Medium";
+    }
+    .html-bar {
+      background-color: deepskyblue;
+    }
+    .css-bar {
+      background-color: greenyellow;
+    }
+    .js-bar {
+      background-color: peachpuff;
+    }
+    .python-bar {
+      background-color: darkolivegreen;
+    }
+    .java-bar {
+      background-color: cornflowerblue;
+    } 
+    </style>
+</head>
+<body class="container">
+
+
+<h2>Resultados diagnostico</h2>
+<h4 onclick="window.print();"> Print </h4>
+    <table>
+      <tr>
+        <th>Variable</th>
+        <th>Score %</th>
+      </tr>
+      <tr>
+        <td>Actitud</td>
+        <td><%= jsonData.actitud %></td>
+      </tr>
+      <tr>
+        <td>Motivacion</td>
+        <td><%= jsonData.motivacion %></td>
+      </tr>
+      <tr>
+        <td>Metas y compromiso</td>
+        <td><%= jsonData.metas %></td>
+      </tr>
+      <tr>
+      <td>Habilidades sociales</td>
+      <td><%= jsonData.habSociales %></td>
+    </tr>
+    <tr>
+        <td>Dialogos</td>
+        <td><%= jsonData.dialogos %></td>
+      </tr>
+      <tr>
+      <td>Imagineria</td>
+      <td><%= jsonData.imagineria %></td>
+    </tr>
+    <tr>
+        <td>Manejo de ansiedad</td>
+        <td><%= jsonData.ansiedad %></td>
+      </tr>
+      <tr>
+      <td>Manejo de emociones</td>
+      <td><%= jsonData.emociones %></td>
+    </tr>
+    <tr>
+      <td>Concentracion</td>
+      <td><%= jsonData.concentracion %></td>
+    </tr>
+    </table>
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div class="barchart-Wrapper">
+      <div class="barchart-TimeCol">
+       <div class="barchart-Time">
+         <span class="barchart-TimeText">100</span>
+       </div>
+       <div class="barchart-Time">
+         <span class="barchart-TimeText">75</span>
+       </div>
+       <div class="barchart-Time">
+         <span class="barchart-TimeText">50</span>
+       </div>
+       <div class="barchart-Time">
+         <span class="barchart-TimeText">25</span>
+       </div>
+       <div class="barchart-Time">
+         <span class="barchart-TimeText">0</span>
+       </div>
+      </div>
+         
+      <div class="barChart-Container">
+       <div class="barchart">
+        <div class="barchart-Col">
+         <div class="barchart-Bar html-bar" style="height: <%= jsonData.actitud %>%"></div>
+           <div class="barchart-BarFooter">
+             <h3>Actitud</h3>
+           </div>
+       </div>
+       <div class="barchart-Col">
+        <div class="barchart-Bar css-bar" style="height: <%= jsonData.actitud %>%;"></div>
+         <div class="barchart-BarFooter">
+          <h3>Motivacion</h3>
+         </div>
+       </div>
+       <div class="barchart-Col">
+        <div class="barchart-Bar js-bar" style="height: 75%;"></div>
+          <div class="barchart-BarFooter">
+            <h3>Metas</h3>
+          </div>
+       </div>
+       <div class="barchart-Col">
+        <div class="barchart-Bar python-bar" style="height: 75%;"></div>
+         <div class="barchart-BarFooter">
+          <h3>Sociales</h3>
+         </div>
+       </div>
+       <div class="barchart-Col">
+        <div class="barchart-Bar java-bar" style="height: 75%;"></div>
+         <div class="barchart-BarFooter">
+          <h3>Dialogos</h3>
+         </div>
+         
+       </div>
+      </div>
+     </div>
+    </div> 
+
+
+
+
+    <br><br>
+
+<footer>
+    <%- include('../partials/footer'); %>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+</head>
+<body class="container">
+    <table>
+        <tr>
+          <th>Usuario</th>
+          <th></th>
+        </tr>
+        <% for (var i = 0; i < jsonData.length; i++) { %>
+                <tr>
+                  <td><%= jsonData[i].mail %></td>
+                  <td><a href="/getReporte/<%=jsonData[i]._id%> ">Ver Reporte</a></td>
+                </tr>
+        <% } %>
+    </table>
+
+
+<footer>
+    <%- include('../partials/footer'); %>
+</footer>
+
+</body>
+</html>
